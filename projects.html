@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects | AAH Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #e9ecff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                    radial-gradient(circle at 85% 8%, rgba(124,58,237,0.45), transparent 40%),
+                    radial-gradient(circle at 5% 55%, rgba(34,211,238,0.20), transparent 40%),
+                    radial-gradient(circle at 75% 92%, rgba(37,99,235,0.35), transparent 45%),
+                    #070920;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 16px; flex-wrap: wrap;
+            margin: 22px 5% 0; padding: 12px 14px 12px 26px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 60px;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(14px);
+        }
+        .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #fff; }
+        nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+        nav a { color: #b9c0e6; text-decoration: none; font-size: 14px; padding: 9px 14px; border-radius: 30px; }
+        nav a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+        nav a.active { color: #fff; background: rgba(124,58,237,0.55); }
+        nav a.cta { background: linear-gradient(90deg, #7c3aed, #2563eb); color: #fff; }
+
+        .intro { padding: 70px 8% 30px; max-width: 900px; animation: rise 0.9s ease both; }
+        .intro h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 56px; line-height: 1.1; color: #fff; margin-bottom: 18px;
+        }
+        .intro h1 span {
+            background: linear-gradient(90deg, #a78bfa, #22d3ee);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .intro p { font-weight: 300; color: #c4caee; line-height: 1.9; max-width: 620px; }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+            padding: 30px 8% 80px;
+        }
+        .card {
+            display: flex; flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 20px; overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            transition: transform .25s ease, border-color .25s ease;
+        }
+        .card:hover { transform: translateY(-4px); border-color: rgba(34,211,238,0.5); }
+        .thumb {
+            height: 190px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #2a1a6e, #1b4fa8 60%, #0f8aa8) center / cover no-repeat;
+            color: rgba(255,255,255,0.75); font-size: 14px; letter-spacing: 1px;
+        }
+        .body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+        .tag {
+            align-self: flex-start;
+            padding: 4px 12px; margin-bottom: 12px;
+            border: 1px solid rgba(34,211,238,0.5); border-radius: 30px;
+            color: #67e8f9; font-size: 12px;
+        }
+        .card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #fff; margin-bottom: 8px; }
+        .card p { font-weight: 300; color: #b9c0e6; line-height: 1.7; font-size: 14px; margin-bottom: 12px; }
+        .stack { font-size: 12px; color: #8f98c4; margin-bottom: 16px; }
+        .link { margin-top: auto; color: #67e8f9; text-decoration: none; font-size: 14px; font-weight: 500; }
+        .link:hover { color: #fff; }
+        .soon .link { color: #7d85ad; pointer-events: none; }
+
+        .final {
+            margin: 0 8% 90px; padding: 50px 30px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.14); border-radius: 26px;
+            background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(34,211,238,0.12));
+        }
+        .final h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 34px; color: #fff; margin-bottom: 10px; }
+        .final p { color: #c4caee; font-weight: 300; margin-bottom: 24px; }
+        .btn {
+            display: inline-block; padding: 15px 36px; border-radius: 40px;
+            text-decoration: none; font-weight: 500; color: #fff;
+            background: linear-gradient(90deg, #7c3aed, #2563eb, #22d3ee);
+            box-shadow: 0 10px 30px rgba(124,58,237,0.45);
+        }
+
+        @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .intro { animation: none; } .card { transition: none; } }
+
+        @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) {
+            header { border-radius: 24px; padding: 16px; justify-content: center; }
+            .intro { padding-top: 44px; }
+            .intro h1 { font-size: 38px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">AAH Enterprises</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="why-choose-us.html">Why Choose Us</a>
+        <a href="contact.html" class="cta">Contact</a>
+    </nav>
+</header>
+
+<section class="intro">
+    <h1>Our <span>work</span></h1>
+    <p>From company websites and business tools to cloud apps, SQL-powered systems and browser games. More projects are added as we complete them.</p>
+</section>
+
+<section class="grid">
+
+    <!--
+      NEW PROJECT TEMPLATE: copy the card below, paste it above the
+      Coming Soon card (outside this comment), then change the text.
+
+      <div class="card">
+        <div class="thumb" style="background-image:url('images/project-name.jpg'), linear-gradient(135deg,#2a1a6e,#1b4fa8 60%,#0f8aa8)"></div>
+        <div class="body">
+          <span class="tag">Web App</span>
+          <h3>Project Name</h3>
+          <p>One or two lines about what you built.</p>
+          <div class="stack">HTML &bull; CSS &bull; JavaScript</div>
+          <a class="link" href="https://github.com/aahenterprises/REPO-NAME" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    -->
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/aah-website.jpg'), linear-gradient(135deg,#2a1a6e,#1b4fa8 60%,#0f8aa8)"></div>
+        <div class="body">
+            <span class="tag">Website</span>
+            <h3>AAH Enterprises Website</h3>
+            <p>Our own company website: a modern, responsive multi-page site that works on phones and desktops.</p>
+            <div class="stack">HTML &bull; CSS</div>
+            <a class="link" href="https://github.com/aahenterprises/AAHEnterprises-Portfolio" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/invoice-maker.jpg'), linear-gradient(135deg,#2a1a6e,#1b4fa8 60%,#0f8aa8)"></div>
+        <div class="body">
+            <span class="tag">Web App</span>
+            <h3>Invoice Maker</h3>
+            <p>Create invoices with automatic totals, save and search them, and download as PDF.</p>
+            <div class="stack">HTML &bull; CSS &bull; JavaScript</div>
+            <a class="link" href="https://github.com/aahenterprises/invoice-maker" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/business-dashboard.jpg'), linear-gradient(135deg,#2a1a6e,#1b4fa8 60%,#0f8aa8)"></div>
+        <div class="body">
+            <span class="tag">Dashboard</span>
+            <h3>Business Dashboard</h3>
+            <p>Sales dashboard with live KPI cards, revenue charts, a searchable sales table and CSV export.</p>
+            <div class="stack">JavaScript &bull; Chart.js</div>
+            <a class="link" href="https://github.com/aahenterprises/business-dashboard" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/client-manager.jpg'), linear-gradient(135deg,#2a1a6e,#1b4fa8 60%,#0f8aa8)"></div>
+        <div class="body">
+            <span class="tag">Cloud App</span>
+            <h3>Client Manager</h3>
+            <p>A CRM with secure login. Add, edit and track clients, with data saved in a cloud database.</p>
+            <div class="stack">JavaScript &bull; Firebase Auth &bull; Firestore</div>
+            <a class="link" href="https://github.com/aahenterprises/client-manager" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/booking-system.jpg'), linear-gradient(135deg,#064e3b,#0f766e 60%,#b45309)"></div>
+        <div class="body">
+            <span class="tag">Cloud App</span>
+            <h3>Online Booking System</h3>
+            <p>Customers book appointments online with no double booking. The owner manages everything from an admin panel.</p>
+            <div class="stack">JavaScript &bull; Firebase Auth &bull; Firestore</div>
+            <a class="link" href="https://github.com/aahenterprises/booking-system" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/clinic-management.jpg'), linear-gradient(135deg,#0f766e,#0ea5e9 60%,#fb7185)"></div>
+        <div class="body">
+            <span class="tag">Full-Stack</span>
+            <h3>Clinic Management System</h3>
+            <p>Patients, doctors and appointments with a real SQL database, its own backend and secure login. Double booking is blocked by the database.</p>
+            <div class="stack">Node.js &bull; Express &bull; SQLite &bull; SQL</div>
+            <a class="link" href="https://github.com/aahenterprises/clinic-manager" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/space-shooter.jpg'), linear-gradient(135deg,#1a0a3d,#8b1d62 60%,#ff9f1c)"></div>
+        <div class="body">
+            <span class="tag">Game</span>
+            <h3>Space Shooter</h3>
+            <p>An arcade shooter with levels, power-ups, a Power and Turbo button, four ships and a full menu. Works on phones and desktops.</p>
+            <div class="stack">HTML5 Canvas &bull; JavaScript &bull; Web Audio</div>
+            <a class="link" href="https://github.com/aahenterprises/space-shooter" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="thumb" style="background-image:url('images/night-drive-pro.jpg'), linear-gradient(135deg,#071a2e,#0e7490 60%,#a3e635)"></div>
+        <div class="body">
+            <span class="tag">Game</span>
+            <h3>Night Drive Pro</h3>
+            <p>A car driving game with a steering wheel, gears, horn, indicators, strict traffic rules and eight levels.</p>
+            <div class="stack">HTML5 Canvas &bull; JavaScript &bull; Web Audio</div>
+            <a class="link" href="https://github.com/aahenterprises/night-drive-pro" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="card soon">
+        <div class="thumb">COMING SOON</div>
+        <div class="body">
+            <span class="tag">Mobile</span>
+            <h3>Mobile App</h3>
+            <p>Our first mobile app project will be featured here very soon.</p>
+            <a class="link" href="#">Coming soon</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="final">
+    <h2>Want to be our next project?</h2>
+    <p>Tell us your idea and we will build it with full care.</p>
+    <a class="btn" href="contact.html">Start your project</a>
+</section>
+
+</body>
+</html>
